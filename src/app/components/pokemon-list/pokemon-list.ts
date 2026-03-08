@@ -1,9 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './pokemon-list.html',
-  styleUrl: './pokemon-list.css',
+  styleUrl: './pokemon-list.css'
 })
-export class PokemonList {}
+export class PokemonListComponent implements OnInit {
+
+  pokemones:any[] = [];
+
+  constructor(private pokemonService: PokemonService){}
+
+  ngOnInit(){
+
+    this.pokemonService.obtenerPrimeros151()
+    .subscribe((data:any)=>{
+
+      this.pokemones = data.results;
+
+    });
+
+  }
+
+}

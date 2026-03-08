@@ -1,1 +1,14 @@
-<p>pokemon-list works!</p>
+<h1>Pokédex (151 Pokémon)</h1>
+
+<div class="grid">
+
+  <div class="card" *ngFor="let pokemon of pokemones; let i = index">
+
+    <img 
+    [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + (i+1) + '.png'">
+
+    <h3>{{pokemon.name}}</h3>
+
+  </div>
+
+</div>
